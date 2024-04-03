@@ -13,9 +13,9 @@ def display_meal_options():
 meal_ingredients = {
     "Avocado Toast": ["Whole grain bread", "Avocado", "Cherry tomatoes", "Salt", "Pepper", "Allergy Warning: Gluten"],
     "Grilled Chicken Salad": ["Chicken breast", "Mixed greens", "Cucumber", "Bell peppers", "Balsamic vinaigrette"],
-    "Spaghetti Bolognese": ["Spaghetti pasta", "Ground beef", "Tomato sauce", "Onion", "Garlic", "Parmesan cheese"],
+    "Spaghetti Bolognese": ["Spaghetti pasta", "Ground beef", "Tomato sauce", "Onion", "Garlic", "Parmesan cheese", "Allergy Warning: Lactose, Gluten"],
     "Greek Yogurt Parfait": ["Greek yogurt", "Granola", "Mixed berries", "Honey"],
-    "Veggie Wrap": ["Whole wheat wrap", "Hummus", "Lettuce", "Carrots", "Cucumber", "Avocado"],
+    "Veggie Wrap": ["Whole wheat wrap", "Hummus", "Lettuce", "Carrots", "Cucumber", "Avocado", "Allergy Warning: Gluten"],
     "Teriyaki Salmon with Rice": ["Salmon fillet", "Teriyaki sauce", "Jasmine rice", "Broccoli"]
 }
 
