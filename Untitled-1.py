@@ -9,14 +9,44 @@ def display_meal_options():
     print("6. Teriyaki Salmon with Rice")
     # Add more meal options as needed
 
-# Dictionary to store meal options and their ingredients
-meal_ingredients = {
-    "Avocado Toast": ["Whole grain bread", "Avocado", "Cherry tomatoes", "Salt", "Pepper", "Allergy Warning: Gluten"],
-    "Grilled Chicken Salad": ["Chicken breast", "Mixed greens", "Cucumber", "Bell peppers", "Balsamic vinaigrette"],
-    "Spaghetti Bolognese": ["Spaghetti pasta", "Ground beef", "Tomato sauce", "Onion", "Garlic", "Parmesan cheese", "Allergy Warning: Lactose, Gluten"],
-    "Greek Yogurt Parfait": ["Greek yogurt", "Granola", "Mixed berries", "Honey"],
-    "Veggie Wrap": ["Whole wheat wrap", "Hummus", "Lettuce", "Carrots", "Cucumber", "Avocado", "Allergy Warning: Gluten"],
-    "Teriyaki Salmon with Rice": ["Salmon fillet", "Teriyaki sauce", "Jasmine rice", "Broccoli"]
+# Dictionary to store meal options, their ingredients, nutritional info, and recipe instructions
+meal_data = {
+    "Avocado Toast": {
+        "Ingredients": ["Whole grain bread", "Avocado", "Cherry tomatoes", "Salt", "Pepper"],
+        "Allergies": ["None"],
+        "Nutritional Info": {"Calories": 250, "Protein": 8, "Carbs": 20, "Fat": 15},
+        "Instructions": "Toast the bread, mash the avocado, spread it on toast, top with sliced cherry tomatoes, salt, and pepper."
+    },
+    "Grilled Chicken Salad": {
+        "Ingredients": ["Chicken breast", "Mixed greens", "Cucumber", "Bell peppers", "Balsamic vinaigrette"],
+        "Allergies": ["None"],
+        "Nutritional Info": {"Calories": 350, "Protein": 25, "Carbs": 15, "Fat": 20},
+        "Instructions": "Grill the chicken breast, chop it and mix with mixed greens, sliced cucumber, and bell peppers. Drizzle with balsamic vinaigrette."
+    },
+    "Spaghetti Bolognese": {
+        "Ingredients": ["Spaghetti pasta", "Ground beef", "Tomato sauce", "Onion", "Garlic", "Parmesan cheese"],
+        "Allergies": ["Dairy (Parmesan)"],
+        "Nutritional Info": {"Calories": 400, "Protein": 20, "Carbs": 30, "Fat": 15},
+        "Instructions": "Cook spaghetti pasta. In a separate pan, cook ground beef with onion and garlic, then add tomato sauce. Serve over cooked pasta with grated Parmesan cheese."
+    },
+    "Greek Yogurt Parfait": {
+        "Ingredients": ["Greek yogurt", "Granola", "Mixed berries", "Honey"],
+        "Allergies": ["None"],
+        "Nutritional Info": {"Calories": 300, "Protein": 15, "Carbs": 35, "Fat": 10},
+        "Instructions": "Layer Greek yogurt, granola, and mixed berries in a glass. Drizzle with honey."
+    },
+    "Veggie Wrap": {
+        "Ingredients": ["Whole wheat wrap", "Hummus", "Lettuce", "Carrots", "Cucumber", "Avocado"],
+        "Allergies": ["None"],
+        "Nutritional Info": {"Calories": 280, "Protein": 10, "Carbs": 30, "Fat": 12},
+        "Instructions": "Spread hummus on the wrap, then add lettuce, grated carrots, sliced cucumber, and avocado. Roll it up and serve."
+    },
+    "Teriyaki Salmon with Rice": {
+        "Ingredients": ["Salmon fillet", "Teriyaki sauce", "Jasmine rice", "Broccoli"],
+        "Allergies": ["None"],
+        "Nutritional Info": {"Calories": 380, "Protein": 30, "Carbs": 25, "Fat": 18},
+        "Instructions": "Marinate salmon fillet in teriyaki sauce, then grill or bake. Serve with cooked jasmine rice and steamed broccoli."
+    }
 }
 
 # Function to create a meal plan
@@ -28,9 +58,12 @@ def create_meal_plan():
         display_meal_options()
         while True:
             choice = input(f"Choose a meal for {day} (enter meal number): ")
-            if choice.isdigit() and 1 <= int(choice) <= len(meal_ingredients):
-                meal_name = list(meal_ingredients.keys())[int(choice) - 1]
-                meal_plan[day] = {"Meal": meal_name, "Ingredients": meal_ingredients[meal_name]}
+            if choice.isdigit() and 1 <= int(choice) <= len(meal_data):
+                meal_name = list(meal_data.keys())[int(choice) - 1]
+                meal_plan[day] = {"Meal": meal_name, "Ingredients": meal_data[meal_name]["Ingredients"],
+                                  "Allergies": meal_data[meal_name]["Allergies"],
+                                  "Nutritional Info": meal_data[meal_name]["Nutritional Info"],
+                                  "Instructions": meal_data[meal_name]["Instructions"]}
                 break
             else:
                 print("Invalid choice. Please enter a valid meal number.")
@@ -44,6 +77,11 @@ def display_meal_plan(meal_plan):
         print("Ingredients:")
         for ingredient in details["Ingredients"]:
             print("-", ingredient)
+        print("Allergies:", ", ".join(details["Allergies"]))
+        print("Nutritional Info:")
+        for key, value in details["Nutritional Info"].items():
+            print(f"- {key}: {value}")
+        print("Instructions:", details["Instructions"])
 
 # Main function
 def main():
