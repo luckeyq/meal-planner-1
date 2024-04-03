@@ -7,7 +7,7 @@ def display_meal_options():
     print("4. Greek Yogurt Parfait")
     print("5. Veggie Wrap")
     print("6. Teriyaki Salmon with Rice")
-    # Add more meal options as needed
+
 
 # Dictionary to store meal options, their ingredients, nutritional info, and recipe instructions
 meal_data = {
@@ -91,3 +91,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+1
